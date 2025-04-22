@@ -1,133 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GigU - Soluciones Web</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script defer src="script.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GigU - Plataforma Freelance</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script defer src="script.js"></script>
+  </head>
 
-<body>
-  <!-- MODAL REGISTRO -->
-  <div class="auth-modal active fade-in" id="authModal">
-    <div class="auth-container">
-      <h2 id="formTitle">Registrarse</h2>
-      <div id="notification" class="notification" style="display:none;"></div>
-      <input type="text" id="username" placeholder="Nombre de usuario" required />
-      <input type="email" id="email" placeholder="Correo electrónico" required />
-      <input type="password" id="password" placeholder="Contraseña" required />
-      <button class="button" id="authAction">Crear Cuenta</button>
-      <div class="auth-switch">
-        ¿Ya tienes cuenta? <a id="toggleForm">Iniciar sesión</a>
+  <body>
+    <!-- MODAL REGISTRO -->
+    <div class="auth-modal active fade-in" id="authModal">
+      <div class="auth-container">
+        <h2 id="formTitle">Registrarse</h2>
+        <div id="notification" class="notification" style="display: none"></div>
+        <input
+          type="text"
+          id="username"
+          placeholder="Nombre de usuario"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          placeholder="Correo electrónico"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Contraseña"
+          required
+        />
+        <button class="button" id="authAction">Crear Cuenta</button>
+        <div class="auth-switch">
+          ¿Ya tienes cuenta? <a id="toggleForm">Iniciar sesión</a>
+        </div>
       </div>
     </div>
-  </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="mainContent" style="display: none">
+      <header>
+        <img
+          src="https://res.cloudinary.com/dktqffbwn/image/upload/v1744134051/WhatsApp_Image_2025-04-08_at_1.37.19_AM-removebg-preview_1_umc9jp.png"
+          alt="Logo GigU"
+        />
+        <nav>
+          <a href="#">Inicio</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#clientes">Clientes</a>
+          <a href="#contacto">Contacto</a>
+          <button class="button">Empezar</button>
+        </nav>
+      </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <div id="mainContent" style="display: none;">
-    <header>
-      <img src="https://res.cloudinary.com/dktqffbwn/image/upload/v1744134051/WhatsApp_Image_2025-04-08_at_1.37.19_AM-removebg-preview_1_umc9jp.png" alt="Logo GigU">
-      <nav>
-        <a href="#">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#clientes">Clientes</a>
-        <a href="#contacto">Contacto</a>
-        <button class="button">Empezar</button>
-      </nav>
-    </header>
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Conecta. Colabora. Crea.</h1>
+          <p>
+            GigU es la plataforma donde estudiantes, freelancers y pequeños
+            emprendimientos se encuentran para crear grandes proyectos.
+          </p>
+          <button class="button">Explorar más</button>
+        </div>
+        <img
+          src="https://img.freepik.com/foto-gratis/representaciones-experiencia-usuario-diseno-interfaz_23-2150104516.jpg"
+          alt="Imagen principal"
+        />
+      </section>
 
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Great design is invisible</h1>
-        <p>Transformamos ideas en soluciones digitales únicas. Aplicaciones web, diseño moderno, eficiencia asegurada.</p>
-        <button class="button">Explorar más</button>
-      </div>
-      <img src="https://img.freepik.com/foto-gratis/representaciones-experiencia-usuario-diseno-interfaz_23-2150104516.jpg" alt="Imagen principal">
-    </section>
+      <section class="trust-section">
+        <h2 class="section-title">¿Por qué elegir GigU?</h2>
+        <p>
+          Porque conectamos talento emergente con negocios que buscan soluciones
+          reales. Creamos una comunidad donde todos crecen.
+        </p>
+        <div class="benefits">
+          <div>
+            <div class="benefit-item">
+              ✅ <span>Encuentra proyectos o el equipo que necesitas.</span>
+            </div>
+            <div class="benefit-item">
+              ✅ <span>Ambiente seguro y enfocado en colaboración.</span>
+            </div>
+            <div class="benefit-item">
+              ✅ <span>Desarrollo y diseño con enfoque humano.</span>
+            </div>
+            <div class="benefit-item">
+              ✅ <span>Comunidad activa y soporte continuo.</span>
+            </div>
+            <button class="button" style="margin-top: 20px">Ver más</button>
+          </div>
+          <div>
+            <img
+              src="https://media.istockphoto.com/id/1471444483/es/foto/concepto-de-encuesta-de-satisfacci%C3%B3n-del-cliente-los-usuarios-califican-las-experiencias-de.jpg?s=612x612&w=0&k=20&c=Bgf3bkIo4eIQDrC55iKezs-UbWzXuTB78Q-NjujIeIE="
+              alt="Clientes felices"
+            />
+          </div>
+        </div>
+      </section>
 
-    <section class="trust-section">
-      <h2 class="section-title">Why our clients trust us</h2>
-      <p>Confían en nosotros porque brindamos soluciones claras, confiables y efectivas. Cada proyecto es una alianza de crecimiento.</p>
-      <div class="benefits">
+      <section class="about-section" id="nosotros">
+        <div class="about-content">
+          <h2 class="section-title">Sobre Nosotros</h2>
+          <p>
+            GigU nace para apoyar el talento joven y los pequeños
+            emprendimientos. Somos un puente entre freelancers apasionados y
+            quienes buscan impulsar sus ideas.
+          </p>
+          <p>
+            Creemos en la colaboración como motor del progreso. Aquí, todos
+            tienen un espacio para crecer y aportar.
+          </p>
+          <p>
+            Nuestra misión es simple: ayudar a construir relaciones laborales
+            significativas y exitosas.
+          </p>
+        </div>
+      </section>
+
+      <section class="services-section" id="servicios">
+        <h2 class="section-title">¿Qué puedes hacer en GigU?</h2>
+        <div class="services-cards">
+          <div class="service-card">
+            <i
+              class="fas fa-laptop-code"
+              style="font-size: 48px; color: #5acae6"
+            ></i>
+            <h3>Publicar o tomar proyectos</h3>
+            <p>
+              Encuentra talento o trabaja en desafíos reales según tus
+              habilidades.
+            </p>
+            <a href="#">Saber más</a>
+          </div>
+          <div class="service-card">
+            <i
+              class="fas fa-pencil-ruler"
+              style="font-size: 48px; color: #5acae6"
+            ></i>
+            <h3>Mostrar tu portafolio</h3>
+            <p>
+              Demuestra tu experiencia, habilidades y conecta con nuevos
+              clientes.
+            </p>
+            <a href="#">Saber más</a>
+          </div>
+          <div class="service-card">
+            <i
+              class="fas fa-chart-line"
+              style="font-size: 48px; color: #5acae6"
+            ></i>
+            <h3>Impulsar tu emprendimiento</h3>
+            <p>Conecta con profesionales listos para ayudarte a crecer.</p>
+            <a href="#">Saber más</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="clients-section" id="clientes">
+        <h2 class="section-title">Proyectos que ya confían en nosotros</h2>
+        <p>Emprendimientos y freelancers que ya forman parte de nuestra red:</p>
+        <div class="clients-logos">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkwVgT13iPSw0noeEF86-_pArXP2suISkZiA&s"
+            alt="Cliente 1"
+          />
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfj0a82eFCvWhjzolrruov43xekFTNbTrmpw&s"
+            alt="Cliente 2"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+            alt="Cliente 3"
+          />
+          <img
+            src="https://public.canva.site/logo/media/dfb96cc174513093cd6ed61489ccb750.svg"
+            alt="Cliente 4"
+          />
+        </div>
+      </section>
+
+      <div class="footer-contact" id="contacto">
         <div>
-          <div class="benefit-item">✅ <span>Soluciones 100% personalizadas para cada cliente.</span></div>
-          <div class="benefit-item">✅ <span>Desarrollo ágil y tecnologías de punta.</span></div>
-          <div class="benefit-item">✅ <span>Diseño UI/UX enfocado en la experiencia.</span></div>
-          <div class="benefit-item">✅ <span>Soporte post-lanzamiento dedicado.</span></div>
-          <button class="button" style="margin-top: 20px;">Ver más</button>
+          <h3>¿Tienes una idea o proyecto?</h3>
+          <p>
+            Conversemos y hagámoslo realidad juntos. Un miembro de nuestro
+            equipo te responderá pronto.
+          </p>
+          <p>
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/51998984552" target="_blank"
+              >Escríbenos por WhatsApp</a
+            >
+          </p>
+          <p><i class="fas fa-envelope"></i> diegoseijascorp@gmail.com</p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <a href="https://maps.google.com/?q=Lima,+Perú" target="_blank"
+              >Lima, Perú</a
+            >
+          </p>
+          <h4>Connect with us</h4>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
-        <div>
-          <img src="https://media.istockphoto.com/id/1471444483/es/foto/concepto-de-encuesta-de-satisfacci%C3%B3n-del-cliente-los-usuarios-califican-las-experiencias-de.jpg?s=612x612&w=0&k=20&c=Bgf3bkIo4eIQDrC55iKezs-UbWzXuTB78Q-NjujIeIE=" alt="Clientes felices">
-        </div>
+        <button
+          class="button"
+          onclick="window.location.href='mailto:contacto@gigu.pe'"
+        >
+          Enviar correo
+        </button>
       </div>
-    </section>
-
-    <section class="about-section" id="nosotros">
-      <div class="about-content">
-        <h2 class="section-title">Sobre Nosotros</h2>
-        <p>Somos una empresa dedicada al desarrollo de aplicaciones web personalizadas, ofreciendo soluciones digitales que impulsan la eficiencia y el crecimiento empresarial.</p>
-        <p>Nuestro equipo está conformado por profesionales apasionados por la tecnología, el diseño y la innovación.</p>
-        <p>Creemos firmemente que cada cliente tiene una historia única, y nuestro objetivo es ayudarles a contarla.</p>
-      </div>
-    </section>
-
-    <section class="services-section" id="servicios">
-      <h2 class="section-title">Nuestros Servicios</h2>
-      <div class="services-cards">
-        <div class="service-card">
-          <i class="fas fa-laptop-code" style="font-size: 48px; color: #5acae6;"></i>
-          <h3>Desarrollo Web</h3>
-          <p>Aplicaciones web modernas, rápidas y seguras adaptadas a tus necesidades.</p>
-          <a href="#">Saber más</a>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-pencil-ruler" style="font-size: 48px; color: #5acae6;"></i>
-          <h3>Diseño UI/UX</h3>
-          <p>Interfaces intuitivas que conectan con tus usuarios desde el primer clic.</p>
-          <a href="#">Saber más</a>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-chart-line" style="font-size: 48px; color: #5acae6;"></i>
-          <h3>SEO & Marketing</h3>
-          <p>Posiciona tu marca con estrategias digitales enfocadas en resultados.</p>
-          <a href="#">Saber más</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="clients-section" id="clientes">
-      <h2 class="section-title">Clientes que confían en nosotros</h2>
-      <p>Empresas y marcas que han transformado su presencia digital gracias a nuestra experiencia:</p>
-      <div class="clients-logos">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkwVgT13iPSw0noeEF86-_pArXP2suISkZiA&s" alt="Cliente 1">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfj0a82eFCvWhjzolrruov43xekFTNbTrmpw&s" alt="Cliente 2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Cliente 3">
-        <img src="https://public.canva.site/logo/media/dfb96cc174513093cd6ed61489ccb750.svg" alt="Cliente 4">
-      </div>
-    </section>
-
-    <div class="footer-contact" id="contacto">
-      <div>
-        <h3>¿Tienes un proyecto en mente?</h3>
-        <p>Estaremos encantados de ayudarte. Escríbenos y un especialista se pondrá en contacto.</p>
-        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51998984552" target="_blank">Escríbenos por WhatsApp</a></p>
-        <p><i class="fas fa-envelope"></i> diegoseijascorp@gmail.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.google.com/?q=Lima,+Perú" target="_blank">Lima, Perú</a></p>
-        <h4>Connect with us</h4>
-        <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      <button class="button" onclick="window.location.href='mailto:contacto@gigu.pe'">Enviar correo</button>
     </div>
-  </div>
-</body>
+  </body>
 </html>
