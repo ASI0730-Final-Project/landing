@@ -11,23 +11,23 @@ class User {
 let userDatabase = [];
 
 // Mostrar mensajes de notificación
-function showMessage(message, color = "#d4edda") {
+function showMessage(message, color = '#d4edda') {
   notification.textContent = message;
   notification.style.backgroundColor = color;
-  notification.style.display = "block";
+  notification.style.display = 'block';
   setTimeout(() => {
-    notification.style.display = "none";
+    notification.style.display = 'none';
   }, 3000);
 }
 
 // Función para registrar un nuevo usuario
 function registerUser(username, email, password) {
   // Verifica si el correo ya está registrado
-  if (userDatabase.some((u) => u.email === email)) {
+  if (userDatabase.some(u => u.email === email)) {
     showMessage("Este correo ya está registrado", "#f8d7da");
     return false;
   }
-
+  
   // Crea un nuevo usuario y lo agrega a la base de datos
   const newUser = new User(username, email, password);
   userDatabase.push(newUser);
@@ -37,15 +37,10 @@ function registerUser(username, email, password) {
 
 // Función para iniciar sesión
 function loginUser(email, password) {
-  const user = userDatabase.find(
-    (u) => u.email === email && u.password === password
-  );
+  const user = userDatabase.find(u => u.email === email && u.password === password);
   if (user) {
-    showMessage(
-      `¡Bienvenido, ${user.username || email}! Redirigiendo...`,
-      "#d1ecf1"
-    );
-
+    showMessage(`¡Bienvenido, ${user.username || email}! Redirigiendo...`, "#d1ecf1");
+    
     setTimeout(() => {
       const authModal = document.getElementById("authModal");
       const mainContent = document.getElementById("mainContent");
@@ -67,9 +62,7 @@ toggleForm.addEventListener("click", () => {
   authAction.textContent = isLogin ? "Entrar" : "Crear Cuenta";
 
   // Muestra u oculta el campo de nombre de usuario según corresponda
-  document.getElementById("username").style.display = isLogin
-    ? "none"
-    : "block";
+  document.getElementById("username").style.display = isLogin ? "none" : "block";
 });
 
 // Acción de registro o login
