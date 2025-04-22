@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f9f9f9;
@@ -39,7 +39,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 header img {
@@ -285,10 +285,10 @@ header nav a:hover {
   background: white;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 400px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   text-align: center;
   animation: slideUp 0.6s ease;
 }
@@ -335,11 +335,21 @@ header nav a:hover {
 }
 
 @keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
