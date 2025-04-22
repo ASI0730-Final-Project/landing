@@ -78,7 +78,7 @@ authAction.addEventListener("click", () => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  // Validación de campos vacíos
+  // Verificación de campos vacíos
   if (!email || !password || (!isLogin && !username)) {
     showMessage("Completa todos los campos", "#f8d7da");
     return;

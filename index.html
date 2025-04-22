@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GigU - Soluciones Web</title>
-
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
@@ -18,64 +17,44 @@
   </head>
 
   <body>
-    <!-- MODAL REGISTRO / LOGIN -->
-    <div
-      class="auth-modal active fade-in"
-      id="authModal"
-      role="dialog"
-      aria-labelledby="formTitle"
-      aria-modal="true"
-    >
+    <!-- MODAL REGISTRO -->
+    <div class="auth-modal active fade-in" id="authModal">
       <div class="auth-container">
         <h2 id="formTitle">Registrarse</h2>
-        <div
-          id="notification"
-          class="notification"
-          style="display: none"
-          role="alert"
-          aria-live="polite"
-        ></div>
-        <form id="authForm" novalidate>
-          <input
-            type="text"
-            id="username"
-            placeholder="Nombre de usuario"
-            autocomplete="username"
-            required
-          />
-          <input
-            type="email"
-            id="email"
-            placeholder="Correo electrónico"
-            autocomplete="email"
-            required
-          />
-          <input
-            type="password"
-            id="password"
-            placeholder="Contraseña"
-            autocomplete="current-password"
-            required
-          />
-          <button class="button" id="authAction" type="submit">
-            Crear Cuenta
-          </button>
-        </form>
+        <div id="notification" class="notification" style="display: none"></div>
+        <input
+          type="text"
+          id="username"
+          placeholder="Nombre de usuario"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          placeholder="Correo electrónico"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Contraseña"
+          required
+        />
+        <button class="button" id="authAction">Crear Cuenta</button>
         <div class="auth-switch">
-          ¿Ya tienes cuenta?
-          <a id="toggleForm" href="#" role="button">Iniciar sesión</a>
+          ¿Ya tienes cuenta? <a id="toggleForm">Iniciar sesión</a>
         </div>
       </div>
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main id="mainContent" style="display: none">
-      <header role="banner">
+    <div id="mainContent" style="display: none">
+      <header>
         <img
           src="https://res.cloudinary.com/dktqffbwn/image/upload/v1744134051/WhatsApp_Image_2025-04-08_at_1.37.19_AM-removebg-preview_1_umc9jp.png"
-          alt="Logo de GigU"
+          alt="Logo GigU"
         />
-        <nav role="navigation" aria-label="Menú principal">
+        <nav>
           <a href="#">Inicio</a>
           <a href="#nosotros">Nosotros</a>
           <a href="#servicios">Servicios</a>
@@ -96,7 +75,7 @@
         </div>
         <img
           src="https://img.freepik.com/foto-gratis/representaciones-experiencia-usuario-diseno-interfaz_23-2150104516.jpg"
-          alt="Diseño UX/UI abstracto con computadora y gráficos."
+          alt="Imagen principal"
         />
       </section>
 
@@ -125,7 +104,7 @@
           <div>
             <img
               src="https://media.istockphoto.com/id/1471444483/es/foto/concepto-de-encuesta-de-satisfacci%C3%B3n-del-cliente-los-usuarios-califican-las-experiencias-de.jpg?s=612x612&w=0&k=20&c=Bgf3bkIo4eIQDrC55iKezs-UbWzXuTB78Q-NjujIeIE="
-              alt="Clientes satisfechos dando calificaciones positivas"
+              alt="Clientes felices"
             />
           </div>
         </div>
@@ -201,24 +180,24 @@
         <div class="clients-logos">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkwVgT13iPSw0noeEF86-_pArXP2suISkZiA&s"
-            alt="Logo Cliente 1"
+            alt="Cliente 1"
           />
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfj0a82eFCvWhjzolrruov43xekFTNbTrmpw&s"
-            alt="Logo Cliente 2"
+            alt="Cliente 2"
           />
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-            alt="Logo de Apple"
+            alt="Cliente 3"
           />
           <img
             src="https://public.canva.site/logo/media/dfb96cc174513093cd6ed61489ccb750.svg"
-            alt="Logo Cliente 4"
+            alt="Cliente 4"
           />
         </div>
       </section>
 
-      <footer class="footer-contact" id="contacto" role="contentinfo">
+      <div class="footer-contact" id="contacto">
         <div>
           <h3>¿Tienes un proyecto en mente?</h3>
           <p>
@@ -227,30 +206,19 @@
           </p>
           <p>
             <i class="fab fa-whatsapp"></i>
-            <a
-              href="https://wa.me/51998984552"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a href="https://wa.me/51998984552" target="_blank"
               >Escríbenos por WhatsApp</a
             >
           </p>
-          <p>
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:diegoseijascorp@gmail.com"
-              >diegoseijascorp@gmail.com</a
-            >
-          </p>
+          <p><i class="fas fa-envelope"></i> diegoseijascorp@gmail.com</p>
           <p>
             <i class="fas fa-map-marker-alt"></i>
-            <a
-              href="https://maps.google.com/?q=Lima,+Perú"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a href="https://maps.google.com/?q=Lima,+Perú" target="_blank"
               >Lima, Perú</a
             >
           </p>
           <h4>Connect with us</h4>
-          <div class="footer-social" aria-label="Redes sociales">
+          <div class="footer-social">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -263,7 +231,7 @@
         >
           Enviar correo
         </button>
-      </footer>
-    </main>
+      </div>
+    </div>
   </body>
 </html>
