@@ -60,6 +60,19 @@
           <a href="#servicios">Servicios</a>
           <a href="#clientes">Clientes</a>
           <a href="#contacto">Contacto</a>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Buscar servicio..."
+            style="
+              padding: 6px 12px;
+              border-radius: 8px;
+              border: 1px solid #ccc;
+              margin-left: 12px;
+            "
+          />
+          <span id="prevMatch" style="cursor: pointer; display: none">↑</span>
+          <span id="nextMatch" style="cursor: pointer; display: none">↓</span>
           <button class="button">Empezar</button>
         </nav>
       </header>
@@ -131,6 +144,20 @@
 
       <section class="services-section" id="servicios">
         <h2 class="section-title">¿Qué puedes hacer en GigU?</h2>
+
+        <!-- 🔍 Mensaje si no hay resultados -->
+        <p
+          id="noResults"
+          style="
+            display: none;
+            text-align: center;
+            color: red;
+            font-weight: bold;
+          "
+        >
+          No se encontró esta información.
+        </p>
+
         <div class="services-cards">
           <div class="service-card">
             <i
@@ -214,18 +241,23 @@
           <h4>Connect with us</h4>
           <div class="footer-social">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
-        <button
-          class="button"
-          onclick="window.location.href='mailto:contacto@gigu.pe'"
-        >
-          Enviar correo
-        </button>
       </div>
+
+      <footer>
+        <div class="footer-content">
+          <p>&copy; 2025 GigU. Todos los derechos reservados.</p>
+          <nav>
+            <a href="#privacy-policy">Política de privacidad</a>
+            <a href="#terms-of-service">Términos de servicio</a>
+            <a href="#faq">Preguntas frecuentes</a>
+          </nav>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
