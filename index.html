@@ -60,6 +60,8 @@
           <a href="#servicios">Servicios</a>
           <a href="#clientes">Clientes</a>
           <a href="#contacto">Contacto</a>
+
+          <!-- Buscador + navegación coincidencias -->
           <input
             type="search"
             id="searchInput"
@@ -71,8 +73,31 @@
               margin-left: 12px;
             "
           />
-          <span id="prevMatch" style="cursor: pointer; display: none">↑</span>
-          <span id="nextMatch" style="cursor: pointer; display: none">↓</span>
+          <span
+            id="prevMatch"
+            style="
+              cursor: pointer;
+              display: none;
+              margin-left: 6px;
+              font-weight: bold;
+              font-size: 16px;
+            "
+            title="Coincidencia anterior"
+            >↑</span
+          >
+          <span
+            id="nextMatch"
+            style="
+              cursor: pointer;
+              display: none;
+              margin-left: 4px;
+              font-weight: bold;
+              font-size: 16px;
+            "
+            title="Siguiente coincidencia"
+            >↓</span
+          >
+
           <button class="button">Empezar</button>
         </nav>
       </header>
@@ -145,7 +170,6 @@
       <section class="services-section" id="servicios">
         <h2 class="section-title">¿Qué puedes hacer en GigU?</h2>
 
-        <!-- 🔍 Mensaje si no hay resultados -->
         <p
           id="noResults"
           style="

@@ -342,6 +342,25 @@ header nav a:hover {
   display: flex;
   align-items: center;
 }
+.highlight {
+  background-color: yellow;
+}
+
+.highlight.active {
+  border: 2px solid #00bfff;
+  padding: 2px;
+  border-radius: 4px;
+  animation: flash 1s ease-in-out;
+}
+
+@keyframes flash {
+  0% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
 
 #prevMatch,
 #nextMatch {
@@ -349,7 +368,14 @@ header nav a:hover {
   margin-left: 10px;
   cursor: pointer;
 }
-
+@keyframes flash {
+  0% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
 @keyframes slideUp {
   from {
     transform: translateY(40px);

@@ -8,9 +8,14 @@ const notification = document.getElementById("notification");
 let isLogin = false;
 let userDatabase = [];
 
-// Variables para las coincidencias y el índice de coincidencia actual
-let matches = [];
-let currentMatchIndex = -1;
+// Mapa de búsqueda: término => ID de sección
+const sectionMap = {
+  gigu: "GigU",
+  otraseccion: "OtraSeccion",
+  tecnologia: "Tecnologia",
+  contacto: "contactSection",
+  inicio: "homeSection",
+};
 
 function showMessage(message, color = "#d4edda") {
   notification.textContent = message;
@@ -65,45 +70,37 @@ authAction.addEventListener("click", () => {
 
     userDatabase.push({ username, email, password });
     showMessage("Registro exitoso. Ahora inicia sesión", "#cce5ff");
-    toggleForm.click(); // Cambia a modo login automáticamente
+    toggleForm.click();
   }
 });
 
-// ----------- BÚSQUEDA INTELIGENTE CON RESALTADO -------------
-// Función para eliminar los resaltados anteriores
+// ------------------ BÚSQUEDA CON RESALTADO + REDIRECCIÓN ------------------
+
 function removeHighlights() {
   const highlights = document.querySelectorAll("span.highlight");
   highlights.forEach((span) => {
     const parent = span.parentNode;
     parent.replaceChild(document.createTextNode(span.textContent), span);
-    parent.normalize(); // Junta nodos de texto adyacentes
+    parent.normalize();
   });
 }
 
-// Función para resaltar palabras completas que coincidan con la búsqueda
 function highlightMatches(node, query) {
   if (node.nodeType === 3) {
-    // Si el nodo es un nodo de texto
     const text = node.textContent;
-    const regex = new RegExp(`\\b${query}\\b`, "gi"); // Buscar palabra completa
+    const regex = new RegExp(`\\b${query}\\b`, "gi");
 
-    // Evitar hacer múltiples operaciones dentro de un mismo nodo
     if (regex.test(text)) {
       const fragment = document.createDocumentFragment();
       let lastIndex = 0;
       let match;
-      let afterMatch = ""; // Definir después de la coincidencia
 
-      // Encontrar las coincidencias y resaltarlas
       while ((match = regex.exec(text)) !== null) {
         const beforeMatch = text.slice(lastIndex, match.index);
         const matchedText = match[0];
-        afterMatch = text.slice(regex.lastIndex); // Actualizar después del match
 
-        // Crear un nodo de texto para la parte anterior al match
         fragment.appendChild(document.createTextNode(beforeMatch));
 
-        // Crear un nodo para el match y resaltarlo
         const span = document.createElement("span");
         span.className = "highlight";
         span.textContent = matchedText;
@@ -112,30 +109,68 @@ function highlightMatches(node, query) {
         lastIndex = regex.lastIndex;
       }
 
-      // Añadir la parte posterior del texto que no coincide
+      const afterMatch = text.slice(lastIndex);
       fragment.appendChild(document.createTextNode(afterMatch));
 
-      // Reemplazar el contenido del nodo con el nuevo fragmento
       node.replaceWith(fragment);
     }
   } else if (
-    node.nodeType === 1 && // Si el nodo es un nodo de tipo elemento
+    node.nodeType === 1 &&
     node.childNodes &&
-    !["SCRIPT", "STYLE"].includes(node.tagName) && // Evitar scripts y estilos
-    !authModal.contains(node) // Evitar el modal de autenticación
+    !["SCRIPT", "STYLE"].includes(node.tagName)
   ) {
     for (let i = 0; i < node.childNodes.length; i++) {
-      highlightMatches(node.childNodes[i], query); // Llamada recursiva
+      highlightMatches(node.childNodes[i], query);
     }
   }
 }
 
-// Event listener para el campo de búsqueda
+function scrollToSectionFromSearch(query) {
+  const lowered = query.toLowerCase();
+  for (const [key, sectionId] of Object.entries(sectionMap)) {
+    if (key.toLowerCase().includes(lowered)) {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+        window.location.hash = sectionId;
+
+        // Destacar visualmente (opcional)
+        target.classList.add("highlight");
+        setTimeout(() => {
+          target.classList.remove("highlight");
+        }, 1000);
+
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+// Búsqueda mientras escribe
 document.getElementById("searchInput").addEventListener("input", function () {
   const query = this.value.trim();
-  removeHighlights(); // Eliminar los resaltados previos
+  removeHighlights();
 
   if (query !== "") {
-    highlightMatches(document.body, query); // Resaltar las coincidencias en el cuerpo del documento
+    highlightMatches(document.body, query);
   }
 });
+
+// Búsqueda con Enter + redirección a sección
+document
+  .getElementById("searchInput")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      const query = this.value.trim();
+      if (query !== "") {
+        removeHighlights();
+        highlightMatches(document.body, query);
+
+        const success = scrollToSectionFromSearch(query);
+        if (!success) {
+          alert("No se encontró ninguna sección relacionada con: " + query);
+        }
+      }
+    }
+  });
