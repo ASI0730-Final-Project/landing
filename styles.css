@@ -50,6 +50,7 @@ header nav {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 header nav a {
@@ -74,6 +75,35 @@ header nav a:hover {
 
 .button:hover {
   background-color: #47b1cb;
+}
+
+/* Responsive header/nav */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  header nav a,
+  header nav input,
+  header nav button,
+  #prevMatch,
+  #nextMatch {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
 }
 
 /* Hero */
@@ -333,17 +363,15 @@ header nav a:hover {
   font-size: 14px;
   animation: fadeIn 0.4s ease;
 }
+
 .highlight {
-  background-color: yellow; /* color que prefieras */
+  background-color: yellow;
   font-weight: bold;
 }
 
 #searchControls {
   display: flex;
   align-items: center;
-}
-.highlight {
-  background-color: yellow;
 }
 
 .highlight.active {
@@ -368,14 +396,7 @@ header nav a:hover {
   margin-left: 10px;
   cursor: pointer;
 }
-@keyframes flash {
-  0% {
-    background-color: yellow;
-  }
-  100% {
-    background-color: transparent;
-  }
-}
+
 @keyframes slideUp {
   from {
     transform: translateY(40px);
