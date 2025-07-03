@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let isLogin = true;
   let userDatabase = JSON.parse(localStorage.getItem("users")) || [];
 
-  // Mostrar mensaje flotante
   function showMessage(message, color = "#d4edda") {
     notification.textContent = message;
     notification.style.backgroundColor = color;
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
   }
 
-  // Alternar entre login y registro
   toggleForm.addEventListener("click", () => {
     isLogin = !isLogin;
     formTitle.textContent = isLogin ? "Iniciar Sesión" : "Registrarse";
@@ -46,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleForm.textContent = isLogin ? "Crear una" : "Iniciar sesión";
   });
 
-  // Acción principal (login o registro)
   authAction.addEventListener("click", () => {
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -90,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Cerrar sesión
   function cerrarSesion() {
     localStorage.removeItem("loggedInUser");
     showMessage("Sesión cerrada", "#f8d7da");
@@ -102,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   }
 
-  // Mostrar contenido principal si ya está logueado
   const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
   if (loggedUser) {
     authModal.style.display = "none";
@@ -116,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     loginBtn.style.display = "inline-block";
   }
 
-  // --------- BUSCADOR ---------
   const sectionMap = {
     nosotros: "nosotros",
     servicios: "servicios",
