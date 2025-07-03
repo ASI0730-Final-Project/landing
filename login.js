@@ -9,7 +9,6 @@ signInBtn.addEventListener("click", () =>
   container.classList.remove("right-panel-active")
 );
 
-// Registro
 document
   .getElementById("registerForm")
   .addEventListener("submit", function (e) {
@@ -38,7 +37,6 @@ document
     container.classList.remove("right-panel-active");
   });
 
-// Inicio de sesión
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
   const email = document.getElementById("loginEmail").value;
@@ -51,8 +49,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
   if (user) {
     alert(`Bienvenido, ${user.name}!`);
-    // Aquí puedes redirigir a otra página:
-    // window.location.href = "dashboard.html";
+
   } else {
     alert("Correo o contraseña incorrectos.");
   }
