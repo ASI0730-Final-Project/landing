@@ -17,16 +17,16 @@
   </head>
 
   <body>
-    <!-- MODAL REGISTRO -->
-    <div class="auth-modal active fade-in" id="authModal">
+    <!-- MODAL LOGIN/REGISTRO (INICIALMENTE OCULTO) -->
+    <div class="auth-modal fade-in" id="authModal" style="display: none">
       <div class="auth-container">
-        <h2 id="formTitle">Registrarse</h2>
+        <h2 id="formTitle">Iniciar Sesión</h2>
         <div id="notification" class="notification" style="display: none"></div>
         <input
           type="text"
           id="username"
           placeholder="Nombre de usuario"
-          required
+          style="display: none"
         />
         <input
           type="email"
@@ -40,15 +40,15 @@
           placeholder="Contraseña"
           required
         />
-        <button class="button" id="authAction">Crear Cuenta</button>
+        <button class="button" id="authAction">Entrar</button>
         <div class="auth-switch">
-          ¿Ya tienes cuenta? <a id="toggleForm">Iniciar sesión</a>
+          ¿No tienes cuenta? <a id="toggleForm">Crear una</a>
         </div>
       </div>
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <div id="mainContent" style="display: none">
+    <div id="mainContent">
       <header>
         <img
           src="https://res.cloudinary.com/dktqffbwn/image/upload/v1744134051/WhatsApp_Image_2025-04-08_at_1.37.19_AM-removebg-preview_1_umc9jp.png"
@@ -61,7 +61,7 @@
           <a href="#clientes">Clientes</a>
           <a href="#contacto">Contacto</a>
 
-          <!-- Buscador + navegación coincidencias -->
+          <!-- Buscador -->
           <input
             type="search"
             id="searchInput"
@@ -73,32 +73,13 @@
               margin-left: 12px;
             "
           />
-          <span
-            id="prevMatch"
-            style="
-              cursor: pointer;
-              display: none;
-              margin-left: 6px;
-              font-weight: bold;
-              font-size: 16px;
-            "
-            title="Coincidencia anterior"
-            >↑</span
-          >
-          <span
-            id="nextMatch"
-            style="
-              cursor: pointer;
-              display: none;
-              margin-left: 4px;
-              font-weight: bold;
-              font-size: 16px;
-            "
-            title="Siguiente coincidencia"
-            >↓</span
-          >
+          <span id="prevMatch" style="display: none; cursor: pointer">↑</span>
+          <span id="nextMatch" style="display: none; cursor: pointer">↓</span>
 
-          <button class="button">Empezar</button>
+          <!-- Botones de login/registro -->
+          <button class="button" onclick="abrirAuthModal()">
+            Iniciar sesión
+          </button>
         </nav>
       </header>
 
@@ -169,7 +150,6 @@
 
       <section class="services-section" id="servicios">
         <h2 class="section-title">¿Qué puedes hacer en GigU?</h2>
-
         <p
           id="noResults"
           style="
@@ -181,7 +161,6 @@
         >
           No se encontró esta información.
         </p>
-
         <div class="services-cards">
           <div class="service-card">
             <i
@@ -245,10 +224,7 @@
       <div class="footer-contact" id="contacto">
         <div>
           <h3>¿Tienes una idea o proyecto?</h3>
-          <p>
-            Conversemos y hagámoslo realidad juntos. Un miembro de nuestro
-            equipo te responderá pronto.
-          </p>
+          <p>Conversemos y hagámoslo realidad juntos.</p>
           <p>
             <i class="fab fa-whatsapp"></i>
             <a href="https://wa.me/51998984552" target="_blank"
