@@ -1,190 +1,104 @@
-function abrirAuthModal() {
-  document.getElementById("authModal").style.display = "flex";
+const gigData = [
+  {
+    id: 1,
+    title: "Stunning Mobile UI",
+    desc: "I will design a modern & user-friendly mobile interface using Figma or Adobe XD.",
+    price: "S/ 700.00",
+    img: "https://engineersahabedu.com/wp-content/uploads/2024/06/mobile-ui.jpg",
+  },
+  {
+    id: 2,
+    title: "Professional Video Editing",
+    desc: "Polished cuts, transitions & color grading for your footage.",
+    price: "S/ 900.00",
+    img: "https://images.pexels.com/photos/8263353/pexels-photo-8263353.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    id: 3,
+    title: "eCommerce Website",
+    desc: "Launch your Shopify or WooCommerce store with a clean responsive design.",
+    price: "S/ 1 700.00",
+    img: "https://img.freepik.com/free-vector/ecommerce-web-page-concept-illustration_114360-8204.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    id: 4,
+    title: "Interactive Data Dashboards",
+    desc: "Custom dashboards in Power BI / Tableau for insightful analytics.",
+    price: "S/ 480.00",
+    img: "https://images.unsplash.com/photo-1556761175-129418cb2dfe?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 5,
+    title: "Retro Logo Design",
+    desc: "Classic & timeless logo packs with full brand guidelines.",
+    price: "S/ 380.00",
+    img: "https://s3-alpha.figma.com/hub/file/5100863044/8d6ecbcf-ab67-427f-b849-7f9398c61bd9-cover.png",
+  },
+  {
+    id: 6,
+    title: "Landing-Page Copywriting",
+    desc: "Persuasive, SEO-optimized copy that converts visitors into customers.",
+    price: "S/ 250.00",
+    img: "https://cdn.prod.website-files.com/5b5729421aca332c60585f78/61ba1a76b86f7c0573e04541_tier-11-long-form-landing-page-example.png",
+  },
+];
+
+const container = document.getElementById("cardContainer");
+
+function renderCards() {
+  container.innerHTML = "";
+  gigData.forEach((gig) => {
+    const card = document.createElement("article");
+    card.className = "gig-card";
+    card.innerHTML = `
+      <img src="${gig.img}" alt="gig image">
+      <h4>${gig.title}</h4>
+      <p class="desc">${gig.desc}</p>
+      <span class="price">${gig.price}</span>
+      <button class="view-more" data-id="${gig.id}">View More</button>
+    `;
+    container.appendChild(card);
+  });
+}
+renderCards();
+
+function switchView(id) {
+  document.querySelectorAll(".view").forEach((v) => v.classList.remove("show"));
+  document.getElementById(id).classList.add("show");
+  document
+    .querySelectorAll(".nav-link")
+    .forEach((l) => l.classList.remove("active"));
+  document
+    .querySelectorAll(`.nav-link[data-section='${id}']`)
+    .forEach((l) => l.classList.add("active"));
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const authModal = document.getElementById("authModal");
-  const toggleForm = document.getElementById("toggleForm");
-  const authAction = document.getElementById("authAction");
-  const formTitle = document.getElementById("formTitle");
-  const mainContent = document.getElementById("mainContent");
-  const notification = document.getElementById("notification");
-
-  const loginBtn = document.querySelector(
-    'nav .button[onclick="abrirAuthModal()"]'
-  );
-
-  const logoutBtn = document.createElement("button");
-  logoutBtn.textContent = "Cerrar sesión";
-  logoutBtn.classList.add("button");
-  logoutBtn.style.marginLeft = "12px";
-  logoutBtn.style.display = "none";
-  logoutBtn.onclick = cerrarSesion;
-  document.querySelector("nav").appendChild(logoutBtn);
-
-  let isLogin = true;
-  let userDatabase = JSON.parse(localStorage.getItem("users")) || [];
-
-  function showMessage(message, color = "#d4edda") {
-    notification.textContent = message;
-    notification.style.backgroundColor = color;
-    notification.style.display = "block";
-    setTimeout(() => {
-      notification.style.display = "none";
-    }, 3000);
-  }
-
-  toggleForm.addEventListener("click", () => {
-    isLogin = !isLogin;
-    formTitle.textContent = isLogin ? "Iniciar Sesión" : "Registrarse";
-    authAction.textContent = isLogin ? "Entrar" : "Crear Cuenta";
-    document.getElementById("username").style.display = isLogin
-      ? "none"
-      : "block";
-    toggleForm.textContent = isLogin ? "Crear una" : "Iniciar sesión";
+document.querySelectorAll("[data-section]").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    switchView(link.getAttribute("data-section"));
   });
+});
 
-  authAction.addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+container.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("view-more")) return;
+  const gig = gigData.find((g) => g.id == e.target.dataset.id);
+  if (!gig) return;
 
-    if (!email || !password || (!isLogin && !username)) {
-      showMessage("Completa todos los campos", "#f8d7da");
-      return;
-    }
+  document.getElementById("gigImg").src = gig.img;
+  document.getElementById("gigTitle").textContent = gig.title;
+  document.getElementById("gigDesc").textContent = gig.desc;
+  document.getElementById("gigPrice").textContent = gig.price;
 
-    if (isLogin) {
-      const user = userDatabase.find(
-        (u) => u.email === email && u.password === password
-      );
-      if (user) {
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-        showMessage(
-          `¡Bienvenido, ${user.username || email}! Redirigiendo...`,
-          "#d1ecf1"
-        );
-        setTimeout(() => {
-          authModal.style.display = "none";
-          mainContent.style.display = "block";
-          logoutBtn.style.display = "inline-block";
-          loginBtn.style.display = "none";
-        }, 1000);
-      } else {
-        showMessage("Credenciales incorrectas", "#f8d7da");
-      }
-    } else {
-      if (userDatabase.some((u) => u.email === email)) {
-        showMessage("Este correo ya está registrado", "#f8d7da");
-        return;
-      }
+  switchView("gig-details");
+});
 
-      const newUser = { username, email, password };
-      userDatabase.push(newUser);
-      localStorage.setItem("users", JSON.stringify(userDatabase));
-      showMessage("Registro exitoso. Ahora inicia sesión", "#cce5ff");
-      toggleForm.click();
-    }
+document.querySelectorAll(".lang").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".lang")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    alert("UI language changed to: " + btn.textContent);
   });
-
-  function cerrarSesion() {
-    localStorage.removeItem("loggedInUser");
-    showMessage("Sesión cerrada", "#f8d7da");
-    setTimeout(() => {
-      mainContent.style.display = "block";
-      authModal.style.display = "none";
-      logoutBtn.style.display = "none";
-      loginBtn.style.display = "inline-block";
-    }, 1000);
-  }
-
-  const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  if (loggedUser) {
-    authModal.style.display = "none";
-    mainContent.style.display = "block";
-    logoutBtn.style.display = "inline-block";
-    loginBtn.style.display = "none";
-  } else {
-    authModal.style.display = "none";
-    mainContent.style.display = "block";
-    logoutBtn.style.display = "none";
-    loginBtn.style.display = "inline-block";
-  }
-
-  const sectionMap = {
-    nosotros: "nosotros",
-    servicios: "servicios",
-    clientes: "clientes",
-    contacto: "contacto",
-  };
-
-  function removeHighlights() {
-    document.querySelectorAll("span.highlight").forEach((span) => {
-      const parent = span.parentNode;
-      parent.replaceChild(document.createTextNode(span.textContent), span);
-      parent.normalize();
-    });
-  }
-
-  function highlightMatches(node, query) {
-    if (node.nodeType === 3) {
-      const text = node.textContent;
-      const regex = new RegExp(`\\b${query}\\b`, "gi");
-      if (regex.test(text)) {
-        const fragment = document.createDocumentFragment();
-        let lastIndex = 0;
-        let match;
-        while ((match = regex.exec(text)) !== null) {
-          const beforeMatch = text.slice(lastIndex, match.index);
-          const matchedText = match[0];
-          fragment.appendChild(document.createTextNode(beforeMatch));
-          const span = document.createElement("span");
-          span.className = "highlight";
-          span.textContent = matchedText;
-          fragment.appendChild(span);
-          lastIndex = regex.lastIndex;
-        }
-        const afterMatch = text.slice(lastIndex);
-        fragment.appendChild(document.createTextNode(afterMatch));
-        node.replaceWith(fragment);
-      }
-    } else if (
-      node.nodeType === 1 &&
-      node.childNodes &&
-      !["SCRIPT", "STYLE"].includes(node.tagName)
-    ) {
-      node.childNodes.forEach((child) => highlightMatches(child, query));
-    }
-  }
-
-  document
-    .getElementById("searchInput")
-    ?.addEventListener("input", function () {
-      const query = this.value.trim();
-      removeHighlights();
-      if (query !== "") highlightMatches(document.body, query);
-    });
-
-  document
-    .getElementById("searchInput")
-    ?.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        const query = this.value.trim().toLowerCase();
-        if (query !== "") {
-          removeHighlights();
-          highlightMatches(document.body, query);
-          for (const [key, sectionId] of Object.entries(sectionMap)) {
-            if (key.includes(query)) {
-              const target = document.getElementById(sectionId);
-              if (target) {
-                target.scrollIntoView({ behavior: "smooth", block: "center" });
-                target.classList.add("highlight");
-                setTimeout(() => target.classList.remove("highlight"), 1000);
-                break;
-              }
-            }
-          }
-        }
-      }
-    });
 });
