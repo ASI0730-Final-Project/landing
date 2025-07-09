@@ -98,6 +98,11 @@ const i18n = {
       "From startups to established companies, we work with commitment and attention to detail to deliver tailor-made solutions that connect with your audience.",
     viewMore: "View More",
     back: "Back",
+    aboutProductTitle: "About the Product",
+    aboutProductP1:
+      "Our product is a platform that connects freelance talent with real opportunities in a safe, accessible and efficient environment.",
+    aboutProductP2:
+      "It enables buyers and sellers to collaborate transparently, with tools designed to streamline hiring, tracking and delivery.",
   },
   es: {
     homeTitle: "Bienvenido a GigU",
@@ -124,6 +129,11 @@ const i18n = {
       "Desde startups hasta empresas consolidadas, trabajamos con compromiso y atención al detalle para entregar soluciones a medida que conecten con su audiencia.",
     viewMore: "Ver más",
     back: "Regresar",
+    aboutProductTitle: "Sobre el Producto",
+    aboutProductP1:
+      "Nuestro producto es una plataforma que conecta talento freelance con oportunidades reales en un entorno seguro, accesible y eficiente.",
+    aboutProductP2:
+      "Permite a compradores y vendedores colaborar de forma transparente, con herramientas diseñadas para facilitar la contratación, el seguimiento y la entrega de proyectos.",
   },
 };
 
@@ -240,7 +250,15 @@ function applyTranslations(lang) {
   // Botón Back en detalles
   const backBtn = document.querySelector("#gig-details .btn-primary");
   if (backBtn) backBtn.textContent = i18n[lang].back;
-
+  const aboutProduct = document.querySelector("#about-product");
+  if (aboutProduct) {
+    aboutProduct.querySelector("h2").textContent = i18n[lang].aboutProductTitle;
+    const ps = aboutProduct.querySelectorAll("p");
+    if (ps.length >= 2) {
+      ps[0].textContent = i18n[lang].aboutProductP1;
+      ps[1].textContent = i18n[lang].aboutProductP2;
+    }
+  }
   // Cards
   renderCards();
 }
