@@ -74,10 +74,17 @@ const gigData = [
 /* ---------- TEXTOS ESTÁTICOS ---------- */
 const i18n = {
   en: {
+    // Navigation
+    navHome: "Home",
+    navLogin: "Login",
+    navRegister: "Register",
+    navAboutUs: "About Us",
+    navAboutProduct: "About the Product",
+    
     homeTitle: "Welcome to GigU",
     homeSubtitle: "Explore these freelance opportunities",
     loginTitle: "Login",
-    loginSwitch: "Don’t have an account?",
+    loginSwitch: "Don't have an account?",
     loginEmail: "Email",
     loginPassword: "Password",
     loginSubmit: "Submit",
@@ -105,6 +112,13 @@ const i18n = {
       "It enables buyers and sellers to collaborate transparently, with tools designed to streamline hiring, tracking and delivery.",
   },
   es: {
+    // Navigation
+    navHome: "Inicio",
+    navLogin: "Iniciar Sesión",
+    navRegister: "Registrarse",
+    navAboutUs: "Sobre Nosotros",
+    navAboutProduct: "Sobre el Producto",
+    
     homeTitle: "Bienvenido a GigU",
     homeSubtitle: "Explora estas oportunidades freelance",
     loginTitle: "Iniciar Sesión",
@@ -199,6 +213,29 @@ container.addEventListener("click", (e) => {
 function applyTranslations(lang) {
   currentLang = lang;
 
+  // Navigation
+  const navLinks = document.querySelectorAll(".nav-link");
+  navLinks.forEach((link) => {
+    const section = link.getAttribute("data-section");
+    switch (section) {
+      case "home":
+        link.textContent = i18n[lang].navHome;
+        break;
+      case "login":
+        link.textContent = i18n[lang].navLogin;
+        break;
+      case "register":
+        link.textContent = i18n[lang].navRegister;
+        break;
+      case "sobre-nosotros":
+        link.textContent = i18n[lang].navAboutUs;
+        break;
+      case "about-product":
+        link.textContent = i18n[lang].navAboutProduct;
+        break;
+    }
+  });
+
   // Home
   document.querySelector("#home h1").textContent = i18n[lang].homeTitle;
   document.querySelector("#home .subtitle").textContent =
@@ -250,6 +287,8 @@ function applyTranslations(lang) {
   // Botón Back en detalles
   const backBtn = document.querySelector("#gig-details .btn-primary");
   if (backBtn) backBtn.textContent = i18n[lang].back;
+  
+  // About Product
   const aboutProduct = document.querySelector("#about-product");
   if (aboutProduct) {
     aboutProduct.querySelector("h2").textContent = i18n[lang].aboutProductTitle;
@@ -259,6 +298,7 @@ function applyTranslations(lang) {
       ps[1].textContent = i18n[lang].aboutProductP2;
     }
   }
+  
   // Cards
   renderCards();
 }
